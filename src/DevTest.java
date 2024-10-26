@@ -1,49 +1,30 @@
 import java.util.Scanner;
 
 public class DevTest {
-    public static String nonZeroLenString(Scanner pipe, String prompt) {
+    public static void main(String[] args) {
 
-        String retString = "";
+        Scanner in = new Scanner (System.in);
+        String SSN = "";
+        int getInt = 0;
+        double getDouble = 0.0;
+        String string = "";
+        boolean yesNo = false;
+        double temp = 0;
 
-        do {
-            System.out.println("\n" + prompt + ": ");
-            retString = pipe.nextLine();
-        } while (retString.length() == 0);
-        return retString;
+        SafeInput.prettyHeader("Message Centered Here");
+        cToF(32);
     }
-    public static int getInt(Scanner pipe, String prompt) {
+    public static double cToF(double celsius) {
 
-        int enterInt = 0;
-        boolean done = false;
+        double requestedTemp = (celsius*9/5) + 32;
 
-        do {
-            System.out.println("\n" + prompt + ": ");
-            if (pipe.hasNextInt()) {
-                enterInt = pipe.nextInt();
-                pipe.nextLine();
-                done = true;
-            } else {
-                System.out.println("You must enter a number.");
-                pipe.nextLine();
-            }
-        } while (!done);
-        return enterInt;
-    }
-    public static double getDouble(Scanner pipe, String prompt) {
-
-        double enterDouble = 0.0;
-        boolean done = false;
-
-        do {
-            System.out.println("\n" + prompt + ": ");
-            if (pipe.hasNextDouble()) {
-                enterDouble = pipe.nextDouble();
-                done = true;
-            } else {
-                System.out.println("You must enter a number.");
-                pipe.nextLine();
-            }
-        } while(!done);
-        return enterDouble;
+        System.out.printf("Celsius   |   Fahrenheit");
+        System.out.println();
+        for (int i=-100; i<=100; i++) {
+            double fahrenheit = (i*9.0/5.0)+32.0;
+            System.out.printf(i + "   |   " + fahrenheit);
+            System.out.println();
+        }
+        return requestedTemp;
     }
 }
